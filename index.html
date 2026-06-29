@@ -1,0 +1,533 @@
+<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Novo app: atualize e viva uma nova experiência</title>
+<meta name="description" content="Seu aplicativo está de cara nova: visual mais moderno, Home personalizável, cadastro por CEP e mais. Atualize na App Store ou Google Play.">
+<style>
+  html,body{margin:0;padding:0;background:#0B0C0F;overflow-x:hidden}
+  /* ====== VARIÁVEIS GLOBAIS (preenchidas pela URL via JS) ====== */
+  :root{
+    --accent:#8A8F98;     /* cor predominante do white-label (param: cor) */
+    --on-accent:#ffffff;  /* cor de texto/ícone sobre o accent (auto) */
+  }
+</style>
+</head><body>
+<!-- ============================================================================
+     LANDING WHITE-LABEL PARAMETRIZADA · 1 arquivo (GitHub Pages)
+     ----------------------------------------------------------------------------
+     A página lê 4 parâmetros da URL e se monta sozinha:
+
+       ?nome=Grupo Pampulha&cor=E10A1A&play=br.com.iplanner.pampulha&apple=1541854423
+
+       • nome   -> nome do white-label (aparece no topo, rodapé e título)
+       • cor    -> cor predominante em HEX (com ou sem #). Ex.: cor=E10A1A
+       • play   -> ID do pacote OU a URL completa da Play Store
+                   Ex.: play=br.com.iplanner.pampulha
+                        play=https://play.google.com/store/apps/details?id=...
+       • apple  -> ID do app OU a URL completa da App Store
+                   Ex.: apple=1541854423
+                        apple=https://apps.apple.com/us/app/grupo-pampulha/id1541854423
+
+     Sem parâmetros, abre com valores neutros de exemplo.
+     IMAGENS: as telas WL já estão aplicadas; as demais usam as imagens padrão.
+============================================================================ -->
+
+
+<!-- ===================== SEÇÃO 1 · HERO ===================== -->
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap');
+#wl-hero{
+  --ink:#15181D;--dark:#0B0C0F;--dark2:#14161B;
+  --text:#F5F6F8;--muted:rgba(245,246,248,.64);
+  --brd:rgba(255,255,255,.12);--panel:rgba(255,255,255,.05);
+  --font:'Montserrat',sans-serif;--maxw:1240px;--shelf:120px;
+  --hero-bg:url('https://mycond.com.br/wp-content/uploads/2026/06/Background-dobra-1-scaled.jpg');
+}
+#wl-hero, #wl-hero *{margin:0;padding:0;box-sizing:border-box}
+#wl-hero{font-family:var(--font);-webkit-font-smoothing:antialiased;overflow-x:hidden;scroll-behavior:smooth}
+#wl-hero a{text-decoration:none;color:inherit}
+#wl-hero img{display:block;max-width:100%}
+#wl-hero .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+#wl-hero .hero{position:relative;overflow:hidden;min-height:100vh;display:flex;flex-direction:column;background:#fff}
+#wl-hero .citybg{position:absolute;top:0;left:0;right:0;bottom:var(--shelf);z-index:0;background:var(--hero-bg) center 30%/cover no-repeat;filter:grayscale(.35)}
+#wl-hero .ov{position:absolute;top:0;left:0;right:0;bottom:var(--shelf);z-index:0;pointer-events:none;background:
+   radial-gradient(120% 80% at 82% 4%, rgba(255,255,255,.05), transparent 40%),
+   linear-gradient(180deg, rgba(8,9,11,.82) 0%, rgba(18,20,24,.93) 45%, rgba(8,9,11,.97) 100%)}
+#wl-hero .hero::after{content:"";position:absolute;left:0;right:0;bottom:var(--shelf);height:1px;z-index:1;background:linear-gradient(90deg,transparent,var(--accent),transparent);opacity:.6;pointer-events:none}
+#wl-hero .nav{position:relative;z-index:6}
+#wl-hero .nav-in{display:flex;align-items:center;justify-content:space-between;height:84px}
+#wl-hero .brand{display:inline-flex;align-items:center;gap:10px;color:var(--text);font-weight:800;font-size:20px;letter-spacing:.01em}
+#wl-hero .nav-links{display:flex;align-items:center;gap:30px}
+#wl-hero .nav-links a{font-size:14px;font-weight:600;color:var(--muted);transition:color .15s}
+#wl-hero .nav-links a:hover{color:var(--text)}
+#wl-hero .nav-cta{font-size:13px;font-weight:800;letter-spacing:.03em;text-transform:uppercase;color:#15181D;background:#fff;padding:11px 22px;border-radius:999px;transition:transform .15s,opacity .15s}
+#wl-hero .nav-cta:hover{opacity:.9;transform:translateY(-1px)}
+#wl-hero .nav-burger{display:none;background:none;border:none;color:var(--text);font-size:24px;cursor:pointer}
+#wl-hero .hero-grid{flex:1;display:flex;align-items:stretch;gap:40px;position:relative;z-index:2;padding-top:8px}
+#wl-hero .copy{flex:1.08;align-self:center;max-width:600px;padding-bottom:var(--shelf)}
+#wl-hero .badge{display:inline-flex;align-items:center;gap:9px;font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--text);background:var(--panel);border:1px solid var(--brd);padding:8px 15px;border-radius:999px}
+#wl-hero .badge .pdot{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 9px var(--accent);animation:wlh_blink 1.8s ease-in-out infinite}
+#wl-hero .copy h1{font-size:clamp(25px,2.9vw,39px);font-weight:800;line-height:1.12;letter-spacing:-.015em;margin:20px 0 0;color:var(--text);max-width:540px}
+#wl-hero .copy h1 .y{color:var(--text);border-bottom:3px solid var(--accent);padding-bottom:1px}
+#wl-hero .copy .sub{font-size:clamp(14px,1.15vw,16px);line-height:1.6;color:var(--muted);margin-top:18px;max-width:600px}
+#wl-hero .copy .sub b{color:var(--text);font-weight:600}
+#wl-hero .cta{display:flex;flex-wrap:nowrap;gap:14px;margin-top:30px}
+#wl-hero .btn{display:inline-flex;align-items:center;gap:10px;white-space:nowrap;font-family:var(--font);font-size:14px;font-weight:800;letter-spacing:.03em;text-transform:uppercase;padding:16px 28px;border-radius:999px;cursor:pointer;border:none;transition:transform .15s,opacity .15s,border-color .15s,color .15s}
+#wl-hero .btn-primary{background:#fff;color:#15181D;box-shadow:0 10px 30px rgba(0,0,0,.35)}
+#wl-hero .btn-primary:hover{opacity:.92;transform:translateY(-2px)}
+#wl-hero .btn-ghost{background:rgba(255,255,255,.04);color:var(--text);border:1.5px solid rgba(255,255,255,.24)}
+#wl-hero .btn-ghost:hover{border-color:var(--accent)}
+#wl-hero .stores{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
+#wl-hero .store{display:inline-flex;align-items:center;gap:11px;padding:9px 18px 9px 15px;border-radius:13px;background:rgba(255,255,255,.05);border:1px solid var(--brd);transition:border-color .15s,transform .15s}
+#wl-hero .store:hover{border-color:var(--accent);transform:translateY(-2px)}
+#wl-hero .store svg{width:22px;height:22px;flex-shrink:0;fill:var(--text)}
+#wl-hero .store .st-t{line-height:1.1}
+#wl-hero .store .st-t small{display:block;font-size:9.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+#wl-hero .store .st-t b{display:block;font-size:14px;font-weight:800;color:var(--text)}
+#wl-hero .stage{flex:1;align-self:flex-end;display:flex;justify-content:center;position:relative;z-index:2}
+#wl-hero .stage-glow{position:absolute;left:50%;top:42%;transform:translate(-50%,-50%);width:86%;height:74%;z-index:0;background:radial-gradient(48% 54% at 50% 50%,rgba(255,255,255,.10),transparent 72%);filter:blur(12px)}
+#wl-hero .phones{position:relative;z-index:2;width:100%;max-width:520px;filter:drop-shadow(0 30px 64px rgba(0,0,0,.6))}
+@keyframes wlh_blink{0%,100%{opacity:.45}50%{opacity:1}}
+@media(max-width:980px){#wl-hero{--shelf:70px}#wl-hero .nav-links{display:none}#wl-hero .nav-burger{display:block}#wl-hero .hero{min-height:auto}#wl-hero .hero-grid{flex-direction:column;gap:10px;align-items:center}#wl-hero .copy{max-width:none;align-self:auto;padding-bottom:0;text-align:center}#wl-hero .copy .sub{margin-left:auto;margin-right:auto}#wl-hero .cta,#wl-hero .stores{justify-content:center}#wl-hero .stage{align-self:center;margin-top:14px}#wl-hero .phones{max-width:420px;margin-bottom:calc(-1 * var(--shelf) + 10px)}}
+@media(max-width:560px){#wl-hero .wrap{padding:0 20px}#wl-hero .cta{flex-direction:column}#wl-hero .cta .btn{width:100%;justify-content:center}#wl-hero .phones{max-width:330px}}
+@media(prefers-reduced-motion:reduce){#wl-hero .badge .pdot{animation:none}}
+#wl-hero{width:100vw;position:relative;left:50%;right:50%;margin-left:-50vw;margin-right:-50vw;max-width:100vw}
+</style>
+<div id="wl-hero">
+<section class="hero">
+  <div class="citybg"></div>
+  <div class="ov"></div>
+  <header class="nav">
+    <div class="wrap nav-in">
+      <a href="#" class="brand"><span class="wl-name">sua marca</span></a>
+      <nav class="nav-links">
+        <a href="#novidades">Novidades</a>
+        <a href="#home">Nova Home</a>
+        <a href="#cadastro">Cadastro</a>
+        <a href="#consumo">Consumo</a>
+      </nav>
+      <a href="#lojas" class="nav-cta">Atualizar app</a>
+      <button class="nav-burger" aria-label="Menu">☰</button>
+    </div>
+  </header>
+  <div class="wrap hero-grid">
+    <div class="copy">
+      <span class="badge"><span class="pdot"></span>Nova atualização disponível</span>
+      <h1>Um novo app para uma <span class="y">nova experiência</span> em condomínio.</h1>
+      <p class="sub">O seu aplicativo está de cara nova: <b>mais moderno, personalizado</b> e preparado para conectar tudo o que faz parte da sua rotina.</p>
+      <div class="cta">
+        <a href="#lojas" class="btn btn-primary">Atualizar meu aplicativo →</a>
+        <a href="#novidades" class="btn btn-ghost">Conhecer as novidades</a>
+      </div>
+      <div class="stores" id="lojas">
+        <a class="store js-apple" href="#" target="_blank" rel="noopener" aria-label="Baixar na App Store">
+          <svg viewBox="0 0 24 24"><path d="M16.4 12.9c0-2.1 1.7-3.1 1.8-3.2-1-1.4-2.5-1.6-3-1.6-1.3-.1-2.5.8-3.1.8-.6 0-1.6-.7-2.7-.7-1.4 0-2.7.8-3.4 2.1-1.5 2.5-.4 6.3 1 8.3.7 1 1.5 2.1 2.6 2.1 1 0 1.4-.7 2.7-.7 1.2 0 1.6.7 2.7.6 1.1 0 1.8-1 2.5-2 .8-1.2 1.1-2.3 1.1-2.3-.1 0-2.2-.8-2.2-3.3zM14.6 6.2c.6-.7 1-1.7.9-2.7-.8 0-1.9.5-2.5 1.3-.5.6-1 1.6-.9 2.6.9.1 1.8-.5 2.5-1.2z"/></svg>
+          <span class="st-t"><small>Baixar na</small><b>App Store</b></span>
+        </a>
+        <a class="store js-play" href="#" target="_blank" rel="noopener" aria-label="Disponível no Google Play">
+          <svg viewBox="0 0 24 24"><path d="M3.6 2.3c-.2.2-.3.5-.3.9v17.6c0 .4.1.7.3.9l.1.1L13.5 12v-.1L3.7 2.2l-.1.1zM17 15.3l-3.3-3.3 3.3-3.3 3.9 2.2c1.1.6 1.1 1.7 0 2.3L17 15.3zM13.5 12L3.8 21.7c.4.4.9.4 1.6.1l11.1-6.3L13.5 12zM5.4 2.2L16.5 8.5l-3 3-9.7-9.7c.7-.4 1.2-.4 1.6-.1z"/></svg>
+          <span class="st-t"><small>Disponível no</small><b>Google Play</b></span>
+        </a>
+      </div>
+    </div>
+    <div class="stage">
+      <div class="stage-glow"></div>
+      <img class="phones" src="https://mycond.com.br/wp-content/uploads/2026/06/WL-Home-.png" alt="Novo app — tela inicial">
+    </div>
+  </div>
+</section>
+</div>
+
+
+<!-- ===================== SEÇÃO 2 · NOVO LAYOUT ===================== -->
+<style>
+#wl-layout{--ink:#15181D;--light:#F5F6F8;--card:#fff;--line:#E5E7EC;--muted:#5A5E66;--font:'Montserrat',sans-serif;--maxw:1180px;}
+#wl-layout, #wl-layout *{margin:0;padding:0;box-sizing:border-box}
+#wl-layout{font-family:var(--font);background:#fff;color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+#wl-layout img{display:block;max-width:100%}
+#wl-layout .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+#wl-layout .s{position:relative;background:#fff;padding:88px 0 96px}
+#wl-layout .grid{display:grid;grid-template-columns:.92fr 1.08fr;gap:60px;align-items:center}
+#wl-layout .device-col{display:flex;justify-content:center;position:relative}
+#wl-layout .device-glow{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:120%;height:90%;z-index:0;background:radial-gradient(46% 50% at 50% 50%,rgba(0,0,0,.08),transparent 70%);filter:blur(14px)}
+#wl-layout .device{position:relative;z-index:1;width:100%;max-width:300px;aspect-ratio:480/1044;background:#0B0C0F;border-radius:44px;padding:11px;box-shadow:0 30px 70px rgba(0,0,0,.28),inset 0 0 0 2px rgba(255,255,255,.06)}
+#wl-layout .device::before{content:"";position:absolute;top:13px;left:50%;transform:translateX(-50%);width:42%;height:22px;background:#0B0C0F;border-radius:0 0 16px 16px;z-index:3}
+#wl-layout .device .screen{position:relative;width:100%;height:100%;border-radius:34px;overflow:hidden;background:#fff}
+#wl-layout .device .screen img{width:100%;height:100%;object-fit:cover;object-position:top center}
+#wl-layout .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--ink);background:#fff;border:1px solid var(--line);padding:7px 14px;border-radius:999px;box-shadow:0 1px 4px rgba(0,0,0,.05)}
+#wl-layout .eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--accent)}
+#wl-layout .s h2{font-size:clamp(26px,3vw,38px);font-weight:800;line-height:1.12;letter-spacing:-.01em;margin:16px 0 0}
+#wl-layout .s h2 .hl{border-bottom:.18em solid var(--accent)}
+#wl-layout .lead{font-size:clamp(15px,1.3vw,17px);line-height:1.6;color:var(--muted);margin-top:16px;max-width:520px}
+#wl-layout .lead b{color:var(--ink);font-weight:600}
+#wl-layout .feats{display:grid;gap:12px;margin-top:26px;max-width:540px}
+#wl-layout .feat{display:flex;gap:15px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:15px;padding:16px 18px;box-shadow:0 1px 4px rgba(0,0,0,.04);transition:transform .15s,box-shadow .15s}
+#wl-layout .feat:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(0,0,0,.09)}
+#wl-layout .feat .ic{flex-shrink:0;width:44px;height:44px;border-radius:12px;background:var(--accent);display:flex;align-items:center;justify-content:center}
+#wl-layout .feat .ic svg{width:23px;height:23px;stroke:var(--on-accent);stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+#wl-layout .feat b{font-size:15.5px;font-weight:800;display:block;line-height:1.25}
+#wl-layout .feat span{font-size:13.5px;color:var(--muted);display:block;margin-top:4px;line-height:1.5}
+@media(max-width:900px){#wl-layout .grid{grid-template-columns:1fr;gap:40px}#wl-layout .s-text{order:1}#wl-layout .device-col{order:2}#wl-layout .feats,#wl-layout .lead{margin-left:auto;margin-right:auto}}
+@media(max-width:560px){#wl-layout .wrap{padding:0 20px}#wl-layout .s{padding:60px 0 70px}#wl-layout .device{max-width:260px}}
+#wl-layout{width:100vw;position:relative;left:50%;right:50%;margin-left:-50vw;margin-right:-50vw;max-width:100vw}
+</style>
+<div id="wl-layout">
+<section class="s" id="home">
+  <div class="wrap grid">
+    <div class="device-col">
+      <div class="device-glow"></div>
+      <div class="device"><div class="screen">
+        <img src="https://mycond.com.br/wp-content/uploads/2026/06/WL-reorganizar-home.gif" alt="Home sendo reorganizada">
+      </div></div>
+    </div>
+    <div class="s-text" id="novidades">
+      <span class="eyebrow"><span class="dot"></span>Novo visual</span>
+      <h2>Um novo visual. <span class="hl">Do seu jeito.</span></h2>
+      <p class="lead">Interface mais leve, com <b>as cores do seu condomínio</b> e uma Home que você pode <b>reorganizar</b> conforme a sua rotina.</p>
+      <div class="feats">
+        <div class="feat"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 0 18c1.7 0 2-1.3 1.2-2.2-.7-.9-.2-2.3 1-2.3H17a4 4 0 0 0 4-4c0-4.4-4-7.5-9-7.5z"/></svg></div><div><b>Cores personalizadas</b><span>Os botões e elementos de destaque acompanham a identidade visual configurada para cada condomínio.</span></div></div>
+        <div class="feat"><div class="ic"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="6" height="6" rx="1.4"/><rect x="14" y="4" width="6" height="6" rx="1.4"/><rect x="4" y="14" width="6" height="6" rx="1.4"/><path d="M17 13v8M13.5 17.5l3.5 3.5 3.5-3.5"/></svg></div><div><b>Menu reorganizável</b><span>Arraste os módulos e organize a tela inicial de acordo com a sua rotina.</span></div></div>
+        <div class="feat"><div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/></svg></div><div><b>Navegação mais simples</b><span>Os recursos que você mais usa ficam em destaque, em uma tela limpa e intuitiva.</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+
+
+<!-- ===================== SEÇÃO 3 · ENCOMENDAS ===================== -->
+<style>
+#wl-enc{--dark:#0B0C0F;--dark2:#14161B;--brd:rgba(255,255,255,.12);--panel:rgba(255,255,255,.05);--text:#F5F6F8;--muted:rgba(245,246,248,.62);--font:'Montserrat',sans-serif;--maxw:1180px;}
+#wl-enc, #wl-enc *{margin:0;padding:0;box-sizing:border-box}
+#wl-enc{font-family:var(--font);background:var(--dark);color:var(--text);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+#wl-enc img{display:block;max-width:100%}
+#wl-enc .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+#wl-enc .s{position:relative;overflow:hidden;padding:88px 0;background:linear-gradient(180deg,var(--dark2) 0%,var(--dark) 100%)}
+#wl-enc .grid{display:grid;grid-template-columns:1.04fr .96fr;gap:54px;align-items:center}
+#wl-enc .badge{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--text);background:var(--panel);border:1px solid var(--brd);padding:7px 14px;border-radius:999px}
+#wl-enc h2{font-size:clamp(24px,2.9vw,36px);font-weight:800;line-height:1.12;letter-spacing:-.01em;margin:16px 0 0;color:var(--text)}
+#wl-enc h2 .y{border-bottom:.14em solid var(--accent)}
+#wl-enc .lead{font-size:clamp(14px,1.3vw,16px);line-height:1.6;color:var(--muted);margin-top:15px;max-width:520px}
+#wl-enc .lead b{color:var(--text);font-weight:600}
+#wl-enc .flow{display:grid;gap:14px;margin-top:26px;max-width:520px}
+#wl-enc .step{display:flex;gap:15px;align-items:flex-start}
+#wl-enc .num{flex-shrink:0;width:34px;height:34px;border-radius:50%;background:var(--accent);color:var(--on-accent);font-weight:900;font-size:15px;display:flex;align-items:center;justify-content:center}
+#wl-enc .step h4{font-size:15px;font-weight:800;color:var(--text)}
+#wl-enc .step p{font-size:13.5px;color:var(--muted);margin-top:3px;line-height:1.5}
+#wl-enc .mockup{background:rgba(255,255,255,.045);border:1px solid var(--brd);border-radius:22px;padding:22px}
+#wl-enc .mockup-label{font-size:12px;font-weight:700;color:var(--muted);margin-bottom:14px}
+#wl-enc .mockup-img{width:100%;border-radius:12px;margin-bottom:18px}
+#wl-enc .bubble{background:#fff;color:#15181D;border-radius:14px;border-bottom-left-radius:5px;padding:14px 16px;box-shadow:0 6px 18px rgba(0,0,0,.25)}
+#wl-enc .bubble .sender{font-size:11px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:#5A5E66;margin-bottom:6px}
+#wl-enc .bubble .msg{font-size:13.5px;line-height:1.5}
+#wl-enc .ok{margin-top:14px;padding:12px 15px;background:rgba(255,255,255,.06);border:1px solid var(--brd);border-radius:12px;display:flex;align-items:center;gap:10px;font-size:13px;color:var(--muted)}
+#wl-enc .ok b{color:#fff}
+@media(max-width:900px){#wl-enc .grid{grid-template-columns:1fr;gap:38px}#wl-enc .flow,#wl-enc .lead{max-width:none}}
+@media(max-width:560px){#wl-enc .wrap{padding:0 20px}#wl-enc .s{padding:60px 0}}
+#wl-enc{width:100vw;position:relative;left:50%;right:50%;margin-left:-50vw;margin-right:-50vw;max-width:100vw}
+</style>
+<div id="wl-enc">
+<section class="s" id="encomendas">
+  <div class="wrap grid">
+    <div class="content">
+      <span class="badge">📦 Gestão de Encomendas</span>
+      <h2>Da foto da etiqueta à notificação no WhatsApp.<br><span class="y">Em segundos.</span></h2>
+      <p class="lead">O porteiro tira uma foto da etiqueta da encomenda. O app lê os dados, identifica o morador, relaciona com a unidade, registra no sistema e envia a notificação pelo WhatsApp — <b>sem digitar nada</b>.</p>
+      <div class="flow">
+        <div class="step"><div class="num">1</div><div><h4>Porteiro fotografa a etiqueta</h4><p>Sem digitação manual. Só apontar a câmera para a encomenda.</p></div></div>
+        <div class="step"><div class="num">2</div><div><h4>O sistema lê e identifica os dados</h4><p>A IA interpreta a etiqueta e relaciona com o morador e a unidade.</p></div></div>
+        <div class="step"><div class="num">3</div><div><h4>Registra e notifica automaticamente</h4><p>Encomenda protocolada na plataforma e morador avisado no WhatsApp na hora.</p></div></div>
+      </div>
+    </div>
+    <div class="mockup">
+      <p class="mockup-label">📸 Leitura de etiqueta — tela do sistema</p>
+      <img class="mockup-img" src="https://mycond.com.br/wp-content/uploads/2026/04/2-mockups.png" alt="Tela de leitura de etiqueta">
+      <div class="bubble"><div class="sender">Portaria → Apto 304</div><div class="msg">📦 Olá, João! Chegou uma encomenda para você. Remetente: Amazon. Disponível na portaria desde 14h32. Até logo! 😊</div></div>
+      <div class="ok"><span>✅</span><span>Morador notificado em <b>8 segundos</b>. Zero digitação.</span></div>
+    </div>
+  </div>
+</section>
+</div>
+
+
+<!-- ===================== SEÇÃO 4 · CADASTRO POR CEP ===================== -->
+<style>
+#wl-cep{--dark:#0B0C0F;--dark2:#14161B;--brd:rgba(255,255,255,.12);--panel:rgba(255,255,255,.05);--text:#F5F6F8;--muted:rgba(245,246,248,.62);--font:'Montserrat',sans-serif;--maxw:1180px;}
+#wl-cep, #wl-cep *{margin:0;padding:0;box-sizing:border-box}
+#wl-cep{font-family:var(--font);background:var(--dark);color:var(--text);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+#wl-cep img{display:block;max-width:100%}
+#wl-cep .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+#wl-cep .s{position:relative;overflow:hidden;padding:88px 0;background:linear-gradient(180deg,var(--dark) 0%,var(--dark2) 100%)}
+#wl-cep .grid{display:grid;grid-template-columns:.94fr 1.06fr;gap:56px;align-items:center}
+#wl-cep .media{display:flex;justify-content:center;position:relative}
+#wl-cep .media .glow{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:110%;height:80%;z-index:0;background:radial-gradient(46% 50% at 50% 50%,rgba(255,255,255,.10),transparent 70%);filter:blur(14px)}
+#wl-cep .media img{position:relative;z-index:1;width:100%;max-width:320px;filter:drop-shadow(0 26px 56px rgba(0,0,0,.5))}
+#wl-cep .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--text);background:var(--panel);border:1px solid var(--brd);padding:7px 14px;border-radius:999px}
+#wl-cep .eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--accent)}
+#wl-cep h2{font-size:clamp(25px,2.9vw,37px);font-weight:800;line-height:1.13;letter-spacing:-.01em;margin:16px 0 0;color:var(--text)}
+#wl-cep h2 .y{border-bottom:.14em solid var(--accent)}
+#wl-cep p{font-size:clamp(14px,1.25vw,16px);line-height:1.62;color:var(--muted);margin-top:15px;max-width:520px}
+#wl-cep p b{color:var(--text);font-weight:600}
+#wl-cep .steps{display:grid;gap:12px;margin-top:24px;max-width:520px}
+#wl-cep .st{display:flex;gap:14px;align-items:center;background:rgba(255,255,255,.045);border:1px solid var(--brd);border-radius:13px;padding:13px 16px}
+#wl-cep .st .n{flex-shrink:0;width:30px;height:30px;border-radius:50%;background:var(--accent);color:var(--on-accent);font-weight:900;font-size:14px;display:flex;align-items:center;justify-content:center}
+#wl-cep .st b{font-size:14px;font-weight:700;color:var(--text)}
+#wl-cep .tagline{margin-top:22px;font-size:15px;font-weight:800;color:var(--text)}
+@media(max-width:900px){#wl-cep .grid{grid-template-columns:1fr;gap:40px}#wl-cep .media{order:2}#wl-cep .s-text{order:1}#wl-cep p,#wl-cep .steps{max-width:none}}
+@media(max-width:560px){#wl-cep .wrap{padding:0 20px}#wl-cep .s{padding:60px 0}#wl-cep .media img{max-width:260px}}
+#wl-cep{width:100vw;position:relative;left:50%;right:50%;margin-left:-50vw;margin-right:-50vw;max-width:100vw}
+</style>
+<div id="wl-cep">
+<section class="s" id="cadastro">
+  <div class="wrap grid">
+    <div class="media">
+      <div class="glow"></div>
+      <img src="https://mycond.com.br/wp-content/uploads/2026/06/4-cadastro-por-cep.png" alt="Tela de cadastro por CEP">
+    </div>
+    <div class="s-text">
+      <span class="eyebrow"><span class="dot"></span>Cadastro de novos usuários</span>
+      <h2>Cadastrar no seu condomínio ficou <span class="y">mais fácil</span>.</h2>
+      <p>Agora, o cadastro de novos usuários começa pelo <b>CEP</b>. Basta informar sua localização, selecionar o condomínio e continuar.</p>
+      <div class="steps">
+        <div class="st"><span class="n">1</span><b>Informe o seu CEP</b></div>
+        <div class="st"><span class="n">2</span><b>Selecione o seu condomínio</b></div>
+        <div class="st"><span class="n">3</span><b>Continue o cadastro</b></div>
+      </div>
+      <p class="tagline">Mais simples, rápido e sem complicação.</p>
+    </div>
+  </div>
+</section>
+</div>
+
+
+<!-- ===================== SEÇÃO 5 · CONSUMO ===================== -->
+<style>
+#wl-cons{--ink:#15181D;--light:#F5F6F8;--card:#fff;--line:#E5E7EC;--muted:#5A5E66;--font:'Montserrat',sans-serif;--maxw:1180px;}
+#wl-cons, #wl-cons *{margin:0;padding:0;box-sizing:border-box}
+#wl-cons{font-family:var(--font);background:var(--light);color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+#wl-cons img{display:block;max-width:100%}
+#wl-cons .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+#wl-cons .s{position:relative;background:var(--light);padding:88px 0}
+#wl-cons .grid{display:grid;grid-template-columns:1.06fr .94fr;gap:56px;align-items:center}
+#wl-cons .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--ink);background:#fff;border:1px solid var(--line);padding:7px 14px;border-radius:999px;box-shadow:0 1px 4px rgba(0,0,0,.05)}
+#wl-cons .eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--accent)}
+#wl-cons h2{font-size:clamp(25px,2.9vw,37px);font-weight:800;line-height:1.13;letter-spacing:-.01em;margin:16px 0 0}
+#wl-cons h2 .hl{border-bottom:.18em solid var(--accent)}
+#wl-cons p{font-size:clamp(14px,1.25vw,16px);line-height:1.62;color:var(--muted);margin-top:15px;max-width:540px}
+#wl-cons p b{color:var(--ink);font-weight:600}
+#wl-cons .feats{display:grid;gap:12px;margin-top:24px;max-width:540px}
+#wl-cons .feat{display:flex;gap:14px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:13px;padding:14px 16px;box-shadow:0 1px 4px rgba(0,0,0,.04)}
+#wl-cons .feat .ic{flex-shrink:0;width:40px;height:40px;border-radius:11px;background:var(--accent);display:flex;align-items:center;justify-content:center}
+#wl-cons .feat .ic svg{width:21px;height:21px;stroke:var(--on-accent);stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+#wl-cons .feat b{font-size:14.5px;font-weight:700}
+#wl-cons .tagline{margin-top:22px;font-size:15px;font-weight:800;color:var(--ink)}
+#wl-cons .media{display:flex;justify-content:center;position:relative}
+#wl-cons .media .glow{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:110%;height:80%;z-index:0;background:radial-gradient(46% 50% at 50% 50%,rgba(0,0,0,.08),transparent 70%);filter:blur(14px)}
+#wl-cons .media img{position:relative;z-index:1;width:100%;max-width:320px;filter:drop-shadow(0 26px 56px rgba(0,0,0,.22))}
+@media(max-width:900px){#wl-cons .grid{grid-template-columns:1fr;gap:40px}#wl-cons .media{order:2}#wl-cons .s-text{order:1}#wl-cons p,#wl-cons .feats{margin-left:auto;margin-right:auto}}
+@media(max-width:560px){#wl-cons .wrap{padding:0 20px}#wl-cons .s{padding:60px 0}#wl-cons .media img{max-width:260px}}
+#wl-cons{width:100vw;position:relative;left:50%;right:50%;margin-left:-50vw;margin-right:-50vw;max-width:100vw}
+</style>
+<div id="wl-cons">
+<section class="s" id="consumo">
+  <div class="wrap grid">
+    <div class="s-text">
+      <span class="eyebrow"><span class="dot"></span>Módulo de Consumo</span>
+      <h2>Mais informações sobre o <span class="hl">consumo</span>.</h2>
+      <p>Além da leitura, agora você também acompanha <b>a data e a hora da coleta</b>, o <b>consumo do mês</b> e o andamento dos lançamentos.</p>
+      <div class="feats">
+        <div class="feat"><div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></svg></div><b>Data e hora da coleta da leitura</b></div>
+        <div class="feat"><div class="ic"><svg viewBox="0 0 24 24"><path d="M4 19V5M4 19h16M8 16v-4M12 16V8M16 16v-7"/></svg></div><b>Consumo do mês em destaque</b></div>
+        <div class="feat"><div class="ic"><svg viewBox="0 0 24 24"><path d="M4 12a8 8 0 1 1 8 8"/><path d="M12 8v4l3 2"/></svg></div><b>Andamento dos lançamentos</b></div>
+      </div>
+      <p class="tagline">Uma visão mais completa para uma gestão mais eficiente.</p>
+    </div>
+    <div class="media">
+      <div class="glow"></div>
+      <img src="https://mycond.com.br/wp-content/uploads/2026/06/WL-3-Consumo.png" alt="Tela de consumo">
+    </div>
+  </div>
+</section>
+</div>
+
+
+<!-- ===================== SEÇÃO 6 · CTA FINAL ===================== -->
+<style>
+#wl-cta{--ink:#15181D;--dark:#0B0C0F;--font:'Montserrat',sans-serif;--maxw:900px;}
+#wl-cta, #wl-cta *{margin:0;padding:0;box-sizing:border-box}
+#wl-cta{font-family:var(--font);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+#wl-cta .cta{background:var(--ink);color:#fff;text-align:center;padding:80px 24px}
+#wl-cta .wrap{max-width:var(--maxw);margin:0 auto}
+#wl-cta h2{font-size:clamp(28px,4vw,46px);font-weight:900;line-height:1.08}
+#wl-cta p{font-size:clamp(15px,1.6vw,18px);font-weight:500;line-height:1.55;margin:16px auto 0;max-width:640px;opacity:.82}
+#wl-cta .stores{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:30px}
+#wl-cta .store{display:inline-flex;align-items:center;gap:11px;padding:13px 24px 13px 20px;border-radius:14px;background:#fff;color:var(--ink);box-shadow:0 12px 30px rgba(0,0,0,.3);transition:transform .15s,opacity .15s;text-decoration:none}
+#wl-cta .store:hover{opacity:.92;transform:translateY(-2px)}
+#wl-cta .store svg{width:24px;height:24px;flex-shrink:0;fill:var(--ink)}
+#wl-cta .store .t{line-height:1.1;text-align:left}
+#wl-cta .store .t small{display:block;font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;opacity:.65}
+#wl-cta .store .t b{display:block;font-size:15px;font-weight:800}
+#wl-cta .note{margin-top:18px;font-size:13px;font-weight:600;opacity:.6}
+@media(max-width:560px){#wl-cta .cta{padding:60px 20px}#wl-cta .store{width:100%;max-width:300px;justify-content:center}}
+#wl-cta{width:100vw;position:relative;left:50%;right:50%;margin-left:-50vw;margin-right:-50vw;max-width:100vw}
+</style>
+<div id="wl-cta">
+<section class="cta" id="atualizar">
+  <div class="wrap">
+    <h2>Atualize e descubra o novo app.</h2>
+    <p>Um aplicativo mais moderno, personalizado e preparado para facilitar ainda mais a rotina de quem vive e gerencia condomínios.</p>
+    <div class="stores">
+      <a class="store js-apple" href="#" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M16.4 12.9c0-2.1 1.7-3.1 1.8-3.2-1-1.4-2.5-1.6-3-1.6-1.3-.1-2.5.8-3.1.8-.6 0-1.6-.7-2.7-.7-1.4 0-2.7.8-3.4 2.1-1.5 2.5-.4 6.3 1 8.3.7 1 1.5 2.1 2.6 2.1 1 0 1.4-.7 2.7-.7 1.2 0 1.6.7 2.7.6 1.1 0 1.8-1 2.5-2 .8-1.2 1.1-2.3 1.1-2.3-.1 0-2.2-.8-2.2-3.3zM14.6 6.2c.6-.7 1-1.7.9-2.7-.8 0-1.9.5-2.5 1.3-.5.6-1 1.6-.9 2.6.9.1 1.8-.5 2.5-1.2z"/></svg>
+        <span class="t"><small>Atualizar na</small><b>App Store</b></span>
+      </a>
+      <a class="store js-play" href="#" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M3.6 2.3c-.2.2-.3.5-.3.9v17.6c0 .4.1.7.3.9l.1.1L13.5 12v-.1L3.7 2.2l-.1.1zM17 15.3l-3.3-3.3 3.3-3.3 3.9 2.2c1.1.6 1.1 1.7 0 2.3L17 15.3zM13.5 12L3.8 21.7c.4.4.9.4 1.6.1l11.1-6.3L13.5 12zM5.4 2.2L16.5 8.5l-3 3-9.7-9.7c.7-.4 1.2-.4 1.6-.1z"/></svg>
+        <span class="t"><small>Atualizar no</small><b>Google Play</b></span>
+      </a>
+    </div>
+    <div class="note">Procure pelo app na loja e toque em Atualizar.</div>
+  </div>
+</section>
+</div>
+
+
+<!-- ===================== SEÇÃO 7 · FAQ ===================== -->
+<style>
+#wl-faq{--ink:#15181D;--light:#F5F6F8;--card:#fff;--line:#E5E7EC;--muted:#5A5E66;--font:'Montserrat',sans-serif;--maxw:820px;}
+#wl-faq, #wl-faq *{margin:0;padding:0;box-sizing:border-box}
+#wl-faq{font-family:var(--font);background:var(--light);color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+#wl-faq .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+#wl-faq .s{background:var(--light);padding:84px 0}
+#wl-faq .head{text-align:center;margin-bottom:36px}
+#wl-faq .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--ink);background:#fff;border:1px solid var(--line);padding:7px 14px;border-radius:999px;box-shadow:0 1px 4px rgba(0,0,0,.05)}
+#wl-faq .eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--accent)}
+#wl-faq h2{font-size:clamp(26px,3vw,38px);font-weight:800;line-height:1.12;margin-top:15px}
+#wl-faq .list{display:grid;gap:12px}
+#wl-faq details{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:0 20px;box-shadow:0 1px 4px rgba(0,0,0,.04);transition:box-shadow .15s}
+#wl-faq details[open]{box-shadow:0 8px 22px rgba(0,0,0,.08)}
+#wl-faq summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 0;font-size:15.5px;font-weight:700;color:var(--ink)}
+#wl-faq summary::-webkit-details-marker{display:none}
+#wl-faq summary .ico{flex-shrink:0;width:26px;height:26px;border-radius:50%;background:var(--accent);color:var(--on-accent);display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:900;transition:transform .2s}
+#wl-faq details[open] summary .ico{transform:rotate(45deg)}
+#wl-faq details .ans{font-size:14px;line-height:1.6;color:var(--muted);padding:0 0 20px;max-width:680px}
+@media(max-width:560px){#wl-faq .wrap{padding:0 20px}#wl-faq .s{padding:60px 0}}
+#wl-faq{width:100vw;position:relative;left:50%;right:50%;margin-left:-50vw;margin-right:-50vw;max-width:100vw}
+</style>
+<div id="wl-faq">
+<section class="s" id="faq">
+  <div class="wrap">
+    <div class="head"><span class="eyebrow"><span class="dot"></span>Tire suas dúvidas</span><h2>Perguntas frequentes</h2></div>
+    <div class="list">
+      <details><summary>Preciso criar uma nova conta? <span class="ico">+</span></summary><div class="ans">Não precisa. É só atualizar o aplicativo e continuar entrando com os mesmos dados de sempre. Todo o seu histórico e suas informações continuam salvos — o que muda é a experiência, que ficou mais moderna.</div></details>
+      <details><summary>Posso reorganizar os módulos da tela inicial? <span class="ico">+</span></summary><div class="ans">Pode sim! Basta arrastar e soltar os módulos para mudar a ordem e deixar em destaque os recursos que você mais usa no dia a dia. A Home fica do seu jeito.</div></details>
+      <details><summary>Por que não encontro uma nova funcionalidade? <span class="ico">+</span></summary><div class="ans">Algumas funcionalidades dependem da configuração e dos serviços contratados pelo seu condomínio. Se sentir falta de algo, vale falar com a administração ou o síndico para saber o que está habilitado por aí.</div></details>
+      <details><summary>Como atualizo o aplicativo? <span class="ico">+</span></summary><div class="ans">Abra a App Store (iPhone) ou o Google Play (Android), busque pelo nome do app e toque em Atualizar. Se a atualização automática estiver ligada, é possível que você já esteja com a versão nova.</div></details>
+    </div>
+  </div>
+</section>
+</div>
+
+
+<!-- ===================== SEÇÃO 8 · FOOTER ===================== -->
+<style>
+#wl-footer{--dark:#0B0C0F;--dark2:#14161B;--text:#F5F6F8;--muted:rgba(245,246,248,.58);--font:'Montserrat',sans-serif;--maxw:1180px;}
+#wl-footer, #wl-footer *{margin:0;padding:0;box-sizing:border-box}
+#wl-footer{font-family:var(--font);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+#wl-footer a{text-decoration:none}
+#wl-footer .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+#wl-footer .footer{background:var(--dark);color:var(--muted);padding:56px 0 28px}
+#wl-footer .top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:34px;border-bottom:1px solid var(--dark2);padding-bottom:30px}
+#wl-footer .brand{max-width:320px}
+#wl-footer .brand .logo{display:inline-flex;align-items:center;gap:10px;color:#fff;font-weight:800;font-size:18px}
+#wl-footer .brand p{margin-top:14px;font-size:14px;line-height:1.55;color:var(--muted)}
+#wl-footer .cols{display:flex;gap:54px;flex-wrap:wrap}
+#wl-footer .col h4{color:#fff;font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;margin-bottom:12px}
+#wl-footer .col a{display:block;font-size:14px;margin-bottom:9px;color:var(--muted);transition:color .15s}
+#wl-footer .col a:hover{color:#fff}
+#wl-footer .bottom{margin-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+#wl-footer .bottom .cr{font-size:12px;color:var(--muted)}
+#wl-footer .ybar{height:8px;background:var(--accent)}
+@media(max-width:560px){#wl-footer .wrap{padding:0 20px}}
+#wl-footer{width:100vw;position:relative;left:50%;right:50%;margin-left:-50vw;margin-right:-50vw;max-width:100vw}
+</style>
+<div id="wl-footer">
+<footer class="footer">
+  <div class="wrap">
+    <div class="top">
+      <div class="brand">
+        <span class="logo"><span class="wl-name">sua marca</span></span>
+        <p>O aplicativo do seu condomínio, agora com uma experiência mais moderna e personalizada. App + Web + WhatsApp.</p>
+      </div>
+      <div class="cols">
+        <div class="col"><h4>Novidades</h4><a href="#home">Novo layout</a><a href="#cadastro">Cadastro por CEP</a><a href="#consumo">Consumo</a><a href="#faq">Perguntas frequentes</a></div>
+        <div class="col"><h4>Baixar o app</h4><a class="js-apple" href="#" target="_blank" rel="noopener">App Store</a><a class="js-play" href="#" target="_blank" rel="noopener">Google Play</a></div>
+      </div>
+    </div>
+    <div class="bottom">
+      <span class="cr">© 2026 <span class="wl-name">sua marca</span> — Nova atualização do app. Todos os direitos reservados.</span>
+    </div>
+  </div>
+</footer>
+<div class="ybar"></div>
+</div>
+
+
+<!-- ===================== SCRIPT · LEITURA DOS PARÂMETROS DA URL ===================== -->
+<script>
+(function(){
+  var p = new URLSearchParams(window.location.search);
+
+  // aceita nomes em PT e EN
+  var nome  = p.get('nome')  || p.get('name')  || '';
+  var cor   = p.get('cor')   || p.get('color') || '';
+  var play  = p.get('play')  || '';
+  var apple = p.get('apple') || '';
+
+  /* ---------- NOME ---------- */
+  if(nome){
+    document.querySelectorAll('.wl-name').forEach(function(el){ el.textContent = nome; });
+    document.title = 'Novo app ' + nome + ' — atualize e viva uma nova experiência';
+  }
+
+  /* ---------- COR DE DESTAQUE ---------- */
+  function normalizeHex(c){
+    if(!c) return null;
+    c = c.trim().replace(/^#/, '');
+    if(/^[0-9a-fA-F]{3}$/.test(c)) c = c.split('').map(function(x){return x+x;}).join('');
+    if(/^[0-9a-fA-F]{6}$/.test(c)) return '#'+c.toLowerCase();
+    return null; // valor inválido -> mantém o default
+  }
+  function onAccent(hex){
+    var r=parseInt(hex.substr(1,2),16), g=parseInt(hex.substr(3,2),16), b=parseInt(hex.substr(5,2),16);
+    // luminância relativa simplificada
+    var L = (0.299*r + 0.587*g + 0.114*b)/255;
+    return L > 0.6 ? '#15181D' : '#ffffff';
+  }
+  var hex = normalizeHex(cor);
+  if(hex){
+    document.documentElement.style.setProperty('--accent', hex);
+    document.documentElement.style.setProperty('--on-accent', onAccent(hex));
+  }
+
+  /* ---------- LINKS DAS LOJAS ---------- */
+  function appleUrl(v){
+    if(!v) return null;
+    v = v.trim();
+    if(/^https?:\/\//i.test(v)) return v;               // já é URL completa
+    var id = v.replace(/^id/i,'').replace(/\D/g,'');     // pega só os números
+    return id ? 'https://apps.apple.com/app/id'+id : null;
+  }
+  function playUrl(v){
+    if(!v) return null;
+    v = v.trim();
+    if(/^https?:\/\//i.test(v)) return v;               // já é URL completa
+    return 'https://play.google.com/store/apps/details?id='+encodeURIComponent(v)+'&hl=pt_BR';
+  }
+  var aUrl = appleUrl(apple);
+  var pUrl = playUrl(play);
+  document.querySelectorAll('.js-apple').forEach(function(a){ if(aUrl) a.href = aUrl; });
+  document.querySelectorAll('.js-play').forEach(function(a){ if(pUrl) a.href = pUrl; });
+})();
+</script>
+
+</body></html>
