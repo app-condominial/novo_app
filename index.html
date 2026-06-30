@@ -107,7 +107,7 @@
         <a href="#cadastro">Cadastro</a>
         <a href="#consumo">Consumo</a>
       </nav>
-      <a href="#lojas" class="nav-cta">Atualizar app</a>
+      <a href="#lojas" class="nav-cta js-update">Atualizar app</a>
       <button class="nav-burger" aria-label="Menu">☰</button>
     </div>
   </header>
@@ -117,7 +117,7 @@
       <h1>Um novo app para uma <span class="y">nova experiência</span> em condomínio.</h1>
       <p class="sub">O seu aplicativo está de cara nova: <b>mais moderno, personalizado</b> e preparado para conectar tudo o que faz parte da sua rotina.</p>
       <div class="cta">
-        <a href="#lojas" class="btn btn-primary">Atualizar meu aplicativo →</a>
+        <a href="#lojas" class="btn btn-primary js-update">Atualizar meu aplicativo →</a>
         <a href="#novidades" class="btn btn-ghost">Conhecer as novidades</a>
       </div>
       <div class="stores" id="lojas">
@@ -558,6 +558,22 @@
   var pUrl = playUrl(play);
   document.querySelectorAll('.js-apple').forEach(function(a){ if(aUrl) a.href = aUrl; });
   document.querySelectorAll('.js-play').forEach(function(a){ if(pUrl) a.href = pUrl; });
+
+  /* ---------- BOTÃO "ATUALIZAR" -> loja certa pelo aparelho ---------- */
+  function deviceStore(){
+    var ua = navigator.userAgent || navigator.vendor || window.opera || '';
+    if(/iPad|iPhone|iPod/.test(ua) && !window.MSStream) return aUrl;     // iOS
+    if(/Macintosh/.test(ua) && 'ontouchend' in document) return aUrl;    // iPad (iPadOS)
+    if(/android/i.test(ua)) return pUrl;                                 // Android
+    return null;                                                        // desktop
+  }
+  document.querySelectorAll('.js-update').forEach(function(el){
+    el.addEventListener('click', function(e){
+      var url = deviceStore();
+      if(url){ e.preventDefault(); window.open(url,'_blank','noopener'); }
+      // desktop (url null): mantém href="#lojas" e rola até os dois botões de loja
+    });
+  });
 })();
 </script>
 
