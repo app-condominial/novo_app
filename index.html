@@ -251,6 +251,57 @@
 </div>
 
 
+<!-- ===================== SEÇÃO OPCIONAL · MYCOND PASS (cores MyCond) =====================
+     Aparece só quando a URL tiver  &pass=1  (ou pass=sim/true).
+     Fica entre Encomendas e Cadastro por CEP. Cores fixas da MyCond (navy + amarelo).
+======================================================================= -->
+<style>
+#wl-pass{display:none}  /* oculto por padrão; o JS mostra se ?pass=1 */
+#wl-pass{--ink:#15181D;--light:#F5F6F8;--card:#fff;--line:#E5E7EC;--muted:#5A5E66;--font:'Montserrat',sans-serif;--maxw:1180px;}
+#wl-pass, #wl-pass *{margin:0;padding:0;box-sizing:border-box}
+#wl-pass{font-family:var(--font);background:var(--light);color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+#wl-pass img{display:block;max-width:100%}
+#wl-pass .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+#wl-pass .s{position:relative;background:var(--light);padding:88px 0}
+#wl-pass .grid{display:grid;grid-template-columns:1.06fr .94fr;gap:56px;align-items:center}
+#wl-pass .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--ink);background:#fff;border:1px solid var(--line);padding:7px 14px;border-radius:999px;box-shadow:0 1px 4px rgba(0,0,0,.05)}
+#wl-pass .eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--accent)}
+#wl-pass h2{font-size:clamp(25px,2.9vw,37px);font-weight:800;line-height:1.13;letter-spacing:-.01em;margin:16px 0 0}
+#wl-pass h2 .hl{border-bottom:.18em solid var(--accent)}
+#wl-pass p{font-size:clamp(14px,1.25vw,16px);line-height:1.62;color:var(--muted);margin-top:15px;max-width:540px}
+#wl-pass p b{color:var(--ink);font-weight:600}
+#wl-pass .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+#wl-pass .chip{display:inline-flex;align-items:center;gap:9px;font-size:13px;font-weight:700;color:var(--ink);background:var(--card);border:1px solid var(--line);padding:11px 15px;border-radius:12px;box-shadow:0 1px 4px rgba(0,0,0,.04)}
+#wl-pass .chip svg{width:17px;height:17px;stroke:var(--accent);stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round}
+#wl-pass .media{display:flex;justify-content:center;position:relative}
+#wl-pass .media .glow{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:110%;height:80%;z-index:0;background:radial-gradient(46% 50% at 50% 50%,rgba(0,0,0,.08),transparent 70%);filter:blur(14px)}
+#wl-pass .media img{position:relative;z-index:1;width:100%;max-width:320px;filter:drop-shadow(0 26px 56px rgba(0,0,0,.22))}
+@media(max-width:900px){#wl-pass .grid{grid-template-columns:1fr;gap:40px}#wl-pass .media{order:2}#wl-pass .s-text{order:1}#wl-pass p,#wl-pass .chips{margin-left:auto;margin-right:auto}}
+@media(max-width:560px){#wl-pass .wrap{padding:0 20px}#wl-pass .s{padding:60px 0}#wl-pass .media img{max-width:260px}}
+#wl-pass{width:100vw;position:relative;left:50%;right:50%;margin-left:-50vw;margin-right:-50vw;max-width:100vw}
+</style>
+<div id="wl-pass">
+<section class="s" id="mycondpass">
+  <div class="wrap grid">
+    <div class="s-text">
+      <span class="eyebrow"><span class="dot"></span>MyCond Pass</span>
+      <h2>Uma identidade única para acessar a <span class="hl">rede MyCond</span>.</h2>
+      <p>Com o <b>MyCond Pass</b>, moradores e visitantes têm o cadastro associado ao <b>rosto, CPF e número de celular</b>, criando uma identidade digital única e mais segura.</p>
+      <p>Depois do primeiro cadastro, fica mais fácil acessar <b>outros condomínios autorizados</b> e receber novos convites, sem precisar preencher os mesmos dados novamente.</p>
+      <div class="chips">
+        <span class="chip"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Menos recadastros</span>
+        <span class="chip"><svg viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg>Mais agilidade nos acessos</span>
+        <span class="chip"><svg viewBox="0 0 24 24"><path d="M12 3 5 6v5c0 4 3 7 7 8 4-1 7-4 7-8V6z"/></svg>Rede mais segura e conectada</span>
+      </div>
+    </div>
+    <div class="media">
+      <div class="glow"></div>
+      <img src="https://mycond.com.br/wp-content/uploads/2026/06/5-Mycondpass.png" alt="Tela do MyCond Pass">
+    </div>
+  </div>
+</section>
+</div>
+
 <!-- ===================== SEÇÃO 4 · CADASTRO POR CEP ===================== -->
 <style>
 #wl-cep{--brd:rgba(255,255,255,.12);--panel:rgba(255,255,255,.05);--text:#F5F6F8;--muted:rgba(245,246,248,.62);--font:'Montserrat',sans-serif;--maxw:1180px;}
@@ -351,57 +402,6 @@
 </section>
 </div>
 
-
-<!-- ===================== SEÇÃO OPCIONAL · MYCOND PASS =====================
-     Aparece só quando a URL tiver  &pass=1  (ou pass=sim/true).
-     Ex.: ...&apple=...&pass=1
-======================================================================= -->
-<style>
-#wl-pass{display:none}  /* oculto por padrão; o JS mostra se ?pass=1 */
-#wl-pass{--ink:#15181D;--light:#F5F6F8;--card:#fff;--line:#E5E7EC;--muted:#5A5E66;--font:'Montserrat',sans-serif;--maxw:1180px;}
-#wl-pass, #wl-pass *{margin:0;padding:0;box-sizing:border-box}
-#wl-pass{font-family:var(--font);background:var(--light);color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden}
-#wl-pass img{display:block;max-width:100%}
-#wl-pass .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
-#wl-pass .s{position:relative;background:var(--light);padding:88px 0}
-#wl-pass .grid{display:grid;grid-template-columns:1.06fr .94fr;gap:56px;align-items:center}
-#wl-pass .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--ink);background:#fff;border:1px solid var(--line);padding:7px 14px;border-radius:999px;box-shadow:0 1px 4px rgba(0,0,0,.05)}
-#wl-pass .eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--accent)}
-#wl-pass h2{font-size:clamp(25px,2.9vw,37px);font-weight:800;line-height:1.13;letter-spacing:-.01em;margin:16px 0 0}
-#wl-pass h2 .hl{border-bottom:.18em solid var(--accent)}
-#wl-pass p{font-size:clamp(14px,1.25vw,16px);line-height:1.62;color:var(--muted);margin-top:15px;max-width:540px}
-#wl-pass p b{color:var(--ink);font-weight:600}
-#wl-pass .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
-#wl-pass .chip{display:inline-flex;align-items:center;gap:9px;font-size:13px;font-weight:700;color:var(--ink);background:var(--card);border:1px solid var(--line);padding:11px 15px;border-radius:12px;box-shadow:0 1px 4px rgba(0,0,0,.04)}
-#wl-pass .chip svg{width:17px;height:17px;stroke:var(--accent);stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round}
-#wl-pass .media{display:flex;justify-content:center;position:relative}
-#wl-pass .media .glow{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:110%;height:80%;z-index:0;background:radial-gradient(46% 50% at 50% 50%,rgba(0,0,0,.08),transparent 70%);filter:blur(14px)}
-#wl-pass .media img{position:relative;z-index:1;width:100%;max-width:320px;filter:drop-shadow(0 26px 56px rgba(0,0,0,.22))}
-@media(max-width:900px){#wl-pass .grid{grid-template-columns:1fr;gap:40px}#wl-pass .media{order:2}#wl-pass .s-text{order:1}#wl-pass p,#wl-pass .chips{margin-left:auto;margin-right:auto}}
-@media(max-width:560px){#wl-pass .wrap{padding:0 20px}#wl-pass .s{padding:60px 0}#wl-pass .media img{max-width:260px}}
-#wl-pass{width:100vw;position:relative;left:50%;right:50%;margin-left:-50vw;margin-right:-50vw;max-width:100vw}
-</style>
-<div id="wl-pass">
-<section class="s" id="mycondpass">
-  <div class="wrap grid">
-    <div class="s-text">
-      <span class="eyebrow"><span class="dot"></span>MyCond Pass</span>
-      <h2>Uma identidade única para acessar a <span class="hl">rede MyCond</span>.</h2>
-      <p>Com o <b>MyCond Pass</b>, moradores e visitantes têm o cadastro associado ao <b>rosto, CPF e número de celular</b>, criando uma identidade digital única e mais segura.</p>
-      <p>Depois do primeiro cadastro, fica mais fácil acessar <b>outros condomínios autorizados</b> e receber novos convites, sem precisar preencher os mesmos dados novamente.</p>
-      <div class="chips">
-        <span class="chip"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Menos recadastros</span>
-        <span class="chip"><svg viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg>Mais agilidade nos acessos</span>
-        <span class="chip"><svg viewBox="0 0 24 24"><path d="M12 3 5 6v5c0 4 3 7 7 8 4-1 7-4 7-8V6z"/></svg>Rede mais segura e conectada</span>
-      </div>
-    </div>
-    <div class="media">
-      <div class="glow"></div>
-      <img src="https://mycond.com.br/wp-content/uploads/2026/06/5-Mycondpass.png" alt="Tela do MyCond Pass">
-    </div>
-  </div>
-</section>
-</div>
 
 <!-- ===================== SEÇÃO 6 · CTA FINAL ===================== -->
 <style>
